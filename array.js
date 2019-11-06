@@ -78,14 +78,21 @@ function main(){
   arr.push(19);
   arr.push(45);
   arr.push(10);
-  arr.push(33);
-  arr.push(8);
-  arr.push(88);
-  arr.push(4);
-  arr.push(1);
-  arr.push(333);
-  arr.push(8);
+
+  //pop() method
+  arr.pop();
+  arr.pop();
+  arr.pop();
+  arr.pop();
+  arr.pop();
+  arr.pop();
+
+  //add one item
+  arr.push('tauhida'); 
+
   console.log(arr);  
+  console.log(arr[Object.keys(arr)[0]]); //prints out key 
+  console.log(arr.get(0)); //returns NaN because result is a string, but memory is defined as numbers
 }
 main();
 
