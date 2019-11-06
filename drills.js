@@ -72,56 +72,72 @@ function product(arr) {
 
   return result;
 }
-var array = [1, 3, 9, 4];
-product(array);
+// var array = [1, 3, 9, 4];
+// product(array);
 // O(n) 
 
 
 //Q11: 2D array
 
-function zeroArray(arr){
-  let column = [];
-  let row = [];
+function zeroes(arr) {
+  var n = arr.length;
+  var m = arr[0].length;
 
-  for(let i = 0; i < arr.length; i++){
-    for(let j = 0; i < arr.length; i++){
-      if(arr[i][j] === 0){
-        column[j] = true;
-        row[i] = true;
+  if (n < 1 || m < 1) {
+    return;
+  }
+
+  var column = false;
+  for (let i = 0; i < n; i++) {
+    if (arr[i][0] == 0) {
+      column = true;
+    }
+    for (let j = 1; j < m; j++) {
+      if (arr[i][j] == 0) {
+        arr[i][0] = 0;
+        arr[0][j] = 0;
       }
     }
   }
-  for(let i = 0; i < arr.length; i++){
-    let rows = arr[i];
-    for (let j = 0; j < rows.length; j++){
-      //let columns = rows[j];
-      if(column[j] || row[i]){
-        rows[j] = 0;
+
+  for (let i = 1; i < n; i++) {
+    for (let j = 1; j < m; j++) {
+      if (arr[i][0] == 0 || arr[0][j] == 0) {
+        arr[i][j] = 0;
       }
     }
   }
-  // for(let i = 0; i < row.length; i++){
-  //   for(let j = 0; j < arr[row].length; j++){
-  //     arr[row[i][j]] = 0;
-  //   }
-  // }
 
-  // for(let i = 0; i < column.length; i++){
-  //   for(let j = 0; j < arr[column].length; j++){
-  //     arr[j][column[i]] = 0;
-  //   }
-  // }
+  //first row
+  if (arr[0][0] == 0) {
+    for (let j = 0; j < m; j++) {
+      arr[0][j] = 0;
+    }
+  }
+
+  //first column
+  if (column) {
+    for (let i = 0; i < n; i++) {
+      arr[i][0] = 0;
+    }
+  }
+  console.log(arr);
   return arr;
 }
-console.log(zeroArray([[[1,0,1,1,0],
-  [0,1,1,1,0],
-  [1,1,1,1,1],
-  [1,0,1,1,1],
-  [1,1,1,1,1]]]));
+var array = [
+  [1, 0, 1, 1, 0],
+  [0, 1, 1, 1, 0],
+  [1, 1, 1, 1, 1],
+  [1, 0, 1, 1, 1],
+  [1, 1, 1, 1, 1]
+];
+zeroes(array);
+
+//O(n^2) = quadratic time complexity
+
 
 
 //Q12: String Rotation
-
 function stringRotation(str1, str2){
   if(str1.length !== str2.length){
     return false;
@@ -131,3 +147,5 @@ function stringRotation(str1, str2){
 }
 console.log(stringRotation('amazon', 'azonma'));
 console.log(stringRotation('amazon', 'azonam'));
+//O(n) - linear time complexity
+
