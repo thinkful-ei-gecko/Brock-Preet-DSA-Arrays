@@ -1,7 +1,7 @@
 'use strict';
 
 const memory = require('./memory');
-let Memory = new memory(); 
+let Memory = new memory(); //instantiaing a new instance of the memory class, only way to access this is to create new instance is
 
 class Array {
   constructor(){
